@@ -1,12 +1,4 @@
-// src/App.jsx
-import React, { useState } from "react";
-import Header from "./components/Header";
-import MatchFinder from "./components/MatchFinder";
-import PostForm from "./components/PostForm";
-
-function App() {
-  const [page, setPage] = useState("home"); // home or post
-
+export default function App() {
   return (
     <div>
       <h1>今夜のベストマッチ！</h1>
@@ -28,9 +20,6 @@ function App() {
         <button id="matchButton">マッチを探す</button>
         <div id="result"></div>
       </main>
-      <h1>Hello, World!</h1>
     </div>
   );
 }
-
-export default App;
