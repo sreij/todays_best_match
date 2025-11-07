@@ -23,7 +23,7 @@ export default function App() {
 
         <button id="matchButton">マッチを探す</button>
         <div id="result"></div>
-        <a href="Introduce">紹介ページへジャンプ</a>
+        <a href="/introduce">紹介ページへジャンプ</a>
       </main>
       <Footer />
     </div>
