@@ -1,4 +1,12 @@
-export default function App() {
+// src/App.jsx
+import React, { useState } from "react";
+import Header from "./components/Header";
+import MatchFinder from "./components/MatchFinder";
+import PostForm from "./components/PostForm";
+
+function App() {
+  const [page, setPage] = useState("home"); // home or post
+
   return (
     <div>
       <h1>今夜のベストマッチ！</h1>
@@ -24,3 +32,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
