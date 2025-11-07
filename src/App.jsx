@@ -1,8 +1,12 @@
+import Footer from "./Footer";
+import Header from "./Header";
+
 export default function App() {
   return (
-    <div>
-      <h1>今夜のベストマッチ！</h1>
-      <h2>edited by kouki noyo</h2>
+      <div>
+        <Header />
+        <h1>今夜のベストマッチ！</h1>
+        <h2>edited by kouki noyo</h2>
 
       <main>
         <label for="category">お酒の種類を選択：</label>
@@ -20,6 +24,7 @@ export default function App() {
         <button id="matchButton">マッチを探す</button>
         <div id="result"></div>
       </main>
+      <Footer />
     </div>
   );
 }
