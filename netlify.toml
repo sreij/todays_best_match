@@ -4,6 +4,7 @@
 
 [context.production.environment]
   NODE_VERSION = "22"
+  NPM_FLAGS = "--no-optional"
 
 [[redirects]]
   from = "/*"
