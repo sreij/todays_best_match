@@ -1,0 +1,168 @@
+/* ------------------------------
+   Base
+------------------------------ */
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  background: linear-gradient(135deg, #fff7e6, #ffe0b2);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* ------------------------------
+   Header
+------------------------------ */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 25px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+input[type="text"] {
+  width: 60%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fff;
+  transition: 0.25s;
+}
+
+input[type="text"]:focus {
+  border-color: #ff9800;
+  box-shadow: 0 0 6px rgba(255, 152, 0, 0.4);
+  outline: none;
+}
+
+.icon {
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #444;
+  transition: 0.2s;
+}
+
+.icon:hover {
+  transform: scale(1.15);
+  color: #ff9800;
+}
+
+/* ------------------------------
+   Main
+------------------------------ */
+main {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+/* Textarea card */
+.home-section textarea {
+  width: 65%;
+  height: 130px;
+  margin-top: 15px;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  resize: none;
+  transition: 0.25s;
+}
+
+.home-section textarea:focus {
+  border-color: #ffa726;
+  box-shadow: 0 0 8px rgba(255, 167, 38, 0.4);
+  outline: none;
+}
+
+/* Button */
+button {
+  margin-top: 25px;
+  padding: 12px 26px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ff9800, #ff6f00);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(255, 111, 0, 0.3);
+  transition: 0.25s;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 111, 0, 0.45);
+}
+
+/* ------------------------------
+   Grid (for items UI)
+------------------------------ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 20px;
+  padding: 30px;
+}
+
+.grid-item {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(8px);
+  padding: 20px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 183, 77, 0.5);
+  box-shadow: 0 4px 12px rgba(255, 167, 38, 0.25);
+  transition: 0.25s;
+}
+
+.grid-item:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(255, 167, 38, 0.35);
+}
+
+/* ------------------------------
+   Result Box
+------------------------------ */
+.result-box {
+  margin: 40px auto;
+  padding: 45px;
+  width: 70%;
+  border-radius: 18px;
+  background: rgba(255, 248, 225, 0.85);
+  border: 2px solid #ffca28;
+  font-size: 1.6em;
+  box-shadow: 0 6px 20px rgba(255, 204, 128, 0.4);
+  animation: fadeIn 0.6s ease;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header left: ロゴとタイトルを横並びにする */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-left h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1;
+}
