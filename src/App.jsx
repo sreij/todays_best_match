@@ -5,8 +5,6 @@ export default function App() {
   return (
       <div>
         <Header />
-        <h1>今夜のベストマッチ！</h1>
-        <h2>edited by kouki noyo</h2>
 
       <main>
         <label for="category">お酒の種類を選択：</label>
@@ -23,7 +21,7 @@ export default function App() {
 
         <button id="matchButton">マッチを探す</button>
         <div id="result"></div>
-        <a href="Introduce">紹介ページへジャンプ</a>
+        <a href="/introduce">紹介ページへジャンプ</a>
       </main>
       <Footer />
     </div>
