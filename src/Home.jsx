@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+//import brandsData from "./brand.json";
 
 export default function Home() {
   const [result, setResult] = useState("");
