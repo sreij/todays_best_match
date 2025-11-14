@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import brandsData from "./brand.json";
+//import brandsData from "./brand.json";
 
 export default function Home() {
   const [result, setResult] = useState("");
@@ -22,7 +22,7 @@ export default function Home() {
     // brand.json の該当カテゴリを取得（まだ beer しかないなら beer 固定でもOK）
     const categoryBrands = brandsData[category] || [];
 
-    const randomBrand = categoryBrands.length
+    const randomBrand = brands.length
       ? categoryBrands[Math.floor(Math.random() * categoryBrands.length)]
       : null;
 
