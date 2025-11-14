@@ -1,30 +1,28 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import brandsData from "./brand.json";
 
 export default function Home() {
   const [result, setResult] = useState("");
-
-  // brand.json を fetch したデータ（今は beer のみ）
   const [brands, setBrands] = useState([]);
 
   useEffect(() => {
     fetch("/brand.json")
       .then((res) => res.json())
       .then((data) => {
-        setBrands(data["beer"]); // とりあえず beer のみ
+        setBrands(data["beer"]); // beer のブランド配列を保存
       });
   }, []);
 
   const handleMatch = () => {
     const category = document.getElementById("category").value;
 
-    // brand.json の該当カテゴリを取得（まだ beer しかないなら beer 固定でもOK）
-    const categoryBrands = brandsData[category] || [];
+    // 今は beer だけ対応
+    const categoryBrands = category === "beer" ? brands : [];
 
-    const randomBrand = categoryBrands.length
-      ? categoryBrands[Math.floor(Math.random() * categoryBrands.length)]
-      : null;
+    const randomBrand =
+      categoryBrands.length > 0
+        ? categoryBrands[Math.floor(Math.random() * categoryBrands.length)]
+        : null;
 
     const classicSnacks = {
       beer: "枝豆",
@@ -53,7 +51,9 @@ export default function Home() {
 
     const brandText = randomBrand
       ? `おすすめブランド：${randomBrand.brand}「${randomBrand.name}」`
-      : "ブランド情報を読み込み中...";
+      : category === "beer"
+      ? "ブランド情報を読み込み中..."
+      : "（ビール以外はまだデータがありません）";
 
     const text = `【王道】${classic} / 【意外】${surprise}
 ${brandText}`;
