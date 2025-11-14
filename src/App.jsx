@@ -5,8 +5,6 @@ export default function App() {
   return (
       <div>
         <Header />
-        <h1>今夜のベストマッチ！</h1>
-        <h2>edited by kouki noyo</h2>
 
       <main>
         <label for="category">お酒の種類を選択：</label>
