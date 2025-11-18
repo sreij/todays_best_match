@@ -166,3 +166,116 @@ button:hover {
   font-size: 1.4rem;
   line-height: 1;
 }
+
+/* ------------------------------
+   Result Item (縦に並ぶカード)
+------------------------------ */
+.result-list {
+  width: 70%;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-left: 6px solid #ff9800;
+  padding: 20px 26px;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(255, 152, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: fadeInUp 0.5s ease;
+}
+
+.result-card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #e65100;
+  font-weight: 700;
+}
+
+.result-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-left: 5px;
+}
+
+.result-label {
+  font-weight: bold;
+  color: #ff6f00;
+  width: 70px;
+  text-align: right;
+}
+
+.result-text {
+  font-size: 1.2rem;
+  color: #444;
+}
+
+/* Animation: 下からフワッ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ------------------------------
+   Vertical List (組み合わせ結果)
+------------------------------ */
+
+.vertical-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+}
+
+.vertical-item {
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.tag {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+  width: 60px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.tag.王道 {
+  background: #007bff;
+  color: white;
+}
+
+.tag.意外 {
+  background: #ff9800;
+  color: white;
+}
+
+.value {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.beer {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px solid #ddd;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
