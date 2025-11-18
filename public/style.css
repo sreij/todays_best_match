@@ -103,7 +103,7 @@ button:hover {
 }
 
 /* ------------------------------
-   Grid (for items UI)
+   Grid
 ------------------------------ */
 .grid {
   display: grid;
@@ -154,7 +154,7 @@ button:hover {
   }
 }
 
-/* Header left: ロゴとタイトルを横並びにする */
+/* Header left */
 .header-left {
   display: flex;
   align-items: center;
@@ -168,7 +168,7 @@ button:hover {
 }
 
 /* ------------------------------
-   Result Item (縦に並ぶカード)
+   Result Items（カード縦）
 ------------------------------ */
 .result-list {
   width: 70%;
@@ -228,54 +228,95 @@ button:hover {
   }
 }
 
-/* ------------------------------
-   Vertical List (組み合わせ結果)
------------------------------- */
+/* ==========================================
+      ★ ポップ化追加パート
+========================================== */
 
-.vertical-list-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px;
-}
-
+/* Pop fonts */
+.result-card,
+.vertical-list-container,
 .vertical-item {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 16px;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  font-family: "Fredoka", "Kaisei Decol", "Noto Sans JP", sans-serif;
 }
 
+/* ラベルをポップな丸バッジに */
 .tag {
+  background: #ffd59e;
+  padding: 6px 14px;
+  border-radius: 20px;
   font-weight: bold;
-  padding: 4px 8px;
-  border-radius: 6px;
+  color: #d45a00;
   display: inline-block;
-  width: 60px;
-  text-align: center;
   margin-bottom: 4px;
 }
 
-.tag.王道 {
-  background: #007bff;
-  color: white;
+/* テキスト強調 */
+.value, 
+.beer, 
+.result-text {
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
-.tag.意外 {
-  background: #ff9800;
-  color: white;
+/* 結果をカードで区切る */
+.vertical-item {
+  padding: 18px 24px;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(255, 168, 38, 0.25);
+  border-radius: 16px;
+  border-left: 6px solid #ff9800;
+  margin-bottom: 20px;
 }
 
-.value {
+/* ポップなヘッダー */
+.header {
+  font-family: "Comic Sans MS", "Fredoka", "Rounded Mplus 1c", sans-serif;
+  background: #ffb6c1;
+  padding: 18px;
+  text-align: center;
+  font-size: 28px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-bottom: 4px solid #ff8aa8;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+}
+
+
+/* ==========================================
+      ★ セレクトボックス（ポップ化）
+========================================== */
+
+.label-pop {
+  font-family: "Fredoka", "Kaisei Decol", "Noto Sans JP", sans-serif;
+  color: #ff6f00;
   font-size: 1.2rem;
-  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  display: inline-block;
 }
 
-.beer {
-  margin-top: 12px;
-  padding-top: 8px;
-  border-top: 1px solid #ddd;
-  font-weight: bold;
+.select-pop {
+  font-family: "Fredoka", "Kaisei Decol", "Noto Sans JP", sans-serif;
+  padding: 12px 18px;
+  border-radius: 14px;
+  border: 2px solid #ff9800;
+  background: #fffaf2;
+  box-shadow: 0 4px 10px rgba(255, 152, 0, 0.25);
   font-size: 1.1rem;
+  color: #d45a00;
+  cursor: pointer;
+  transition: 0.25s;
+}
+
+.select-pop:hover {
+  background: #fff3e0;
+  transform: translateY(-2px);
+}
+
+.select-pop:focus {
+  outline: none;
+  border-color: #ff6f00;
+  box-shadow: 0 0 8px rgba(255, 111, 0, 0.4);
 }

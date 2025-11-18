@@ -65,20 +65,21 @@ export default function Home() {
 
   return (
     <main className="p-4 space-y-4">
-      <label htmlFor="category" className="block font-bold text-lg">
-        お酒の種類を選択：
-      </label>
+      <label htmlFor="category" className="label-pop">
+  　　　お酒の種類を選択：
+　　　　</label>
 
-      <select id="category" className="border p-2 rounded">
-        <option value="beer">ビール</option>
-        <option value="wine">ワイン</option>
-        <option value="whiskey">ウィスキー</option>
-        <option value="sour">サワー</option>
-        <option value="shochu">焼酎</option>
-        <option value="sake">日本酒</option>
-        <option value="highball">ハイボール</option>
-        <option value="others">その他</option>
-      </select>
+　　　<select id="category" className="select-pop">
+  　　　<option value="beer">ビール</option>
+  　　　<option value="wine">ワイン</option>
+  　　　<option value="whiskey">ウィスキー</option>
+  　　　<option value="sour">サワー</option>
+  　　　<option value="shochu">焼酎</option>
+  　　　<option value="sake">日本酒</option>
+  　　　<option value="highball">ハイボール</option>
+  　　　<option value="others">その他</option>
+　　　</select>
+
 
       <button
         onClick={handleMatch}
