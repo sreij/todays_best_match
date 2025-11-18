@@ -18,6 +18,12 @@ export default function Home() {
   const handleMatch = () => {
     const category = document.getElementById("category").value;
 
+    // もし「選ばない」が選ばれた場合、カテゴリーを空にする
+    if (category === "none") {
+      setResults([]); // 結果をクリア
+      return; // 何もマッチさせない
+    }
+
     const categoryBrands = brands[category] || [];
 
     const classicSnacks = {
@@ -70,6 +76,7 @@ export default function Home() {
       </label>
 
       <select id="category" className="select-pop">
+        <option value="none">選ばない</option>
         <option value="beer">ビール</option>
         <option value="wine">ワイン</option>
         <option value="whiskey">ウィスキー</option>
@@ -79,7 +86,6 @@ export default function Home() {
         <option value="highball">ハイボール</option>
         <option value="others">その他</option>
       </select>
-
 
       <button
         onClick={handleMatch}
