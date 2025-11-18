@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [results, setResults] = useState([]); 
+  const [results, setResults] = useState([]);
   const [brands, setBrands] = useState({});
 
   useEffect(() => {
@@ -66,19 +66,19 @@ export default function Home() {
   return (
     <main className="p-4 space-y-4">
       <label htmlFor="category" className="label-pop">
-  　　　お酒の種類を選択：
-　　　　</label>
+        お酒の種類を選択：
+      </label>
 
-　　　<select id="category" className="select-pop">
-  　　　<option value="beer">ビール</option>
-  　　　<option value="wine">ワイン</option>
-  　　　<option value="whiskey">ウィスキー</option>
-  　　　<option value="sour">サワー</option>
-  　　　<option value="shochu">焼酎</option>
-  　　　<option value="sake">日本酒</option>
-  　　　<option value="highball">ハイボール</option>
-  　　　<option value="others">その他</option>
-　　　</select>
+      <select id="category" className="select-pop">
+        <option value="beer">ビール</option>
+        <option value="wine">ワイン</option>
+        <option value="whiskey">ウィスキー</option>
+        <option value="sour">サワー</option>
+        <option value="shochu">焼酎</option>
+        <option value="sake">日本酒</option>
+        <option value="highball">ハイボール</option>
+        <option value="others">その他</option>
+      </select>
 
 
       <button
