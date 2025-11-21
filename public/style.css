@@ -252,7 +252,7 @@ button:hover {
 
 /* テキスト強調 */
 .value, 
-.beer, 
+.brand, 
 .result-text {
   font-weight: 600;
   letter-spacing: 0.5px;
