@@ -3,66 +3,73 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const [results, setResults] = useState([]);
-  const [brands, setBrands] = useState({});
+  const [brands, setBrands] = useState({}); // brand.json のデータ
+  const [allSnacks, setAllSnacks] = useState([]); // otsumami.json のデータ
 
+  // ▼▼▼ 1. データ読み込み ▼▼▼
   useEffect(() => {
-    fetch("/brand.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setBrands(data);
-      });
+    // brand.json と otsumami.json を同時に読み込む
+    Promise.all([
+      fetch("/brand.json").then((res) => res.json()),
+      fetch("/otsumami.json").then((res) => res.json()),
+    ])
+      .then(([brandData, snackData]) => {
+        setBrands(brandData);
+        setAllSnacks(snackData);
+      })
+      .catch((error) => console.error("データの読み込みに失敗しました:", error));
   }, []);
 
-  const getRandom = (arr) => arr[Math.floor(Math.random() * arr.length)];
+  // 配列からランダムに1つ要素（名前）を取得する関数
+  const getRandomName = (arr) => {
+    if (!arr || arr.length === 0) return "該当なし";
+    const item = arr[Math.floor(Math.random() * arr.length)];
+    return item.name;
+  };
 
   const handleMatch = () => {
     const category = document.getElementById("category").value;
 
-    // もし「選ばない」が選ばれた場合、カテゴリーを空にする
+    // 「選ばない」が選ばれた場合
     if (category === "none") {
-      setResults([]); // 結果をクリア
-      return; // 何もマッチさせない
+      setResults([]);
+      return;
     }
 
+    // 選ばれたカテゴリのお酒リストを取得
     const categoryBrands = brands[category] || [];
-
-    const classicSnacks = {
-      beer: ["枝豆", "焼き鳥", "唐揚げ", "ソーセージ", "たこわさ"],
-      wine: ["チーズ", "生ハム", "オリーブ", "クラッカー", "ぶどう"],
-      whiskey: ["ナッツ", "チョコ", "ビーフジャーキー", "燻製チーズ", "ドライフルーツ"],
-      sour: ["唐揚げ", "餃子", "ポテチ", "サラダ", "枝豆"],
-      shochu: ["さつま揚げ", "漬物", "焼き鳥", "コンニャク", "冷奴"],
-      sake: ["刺身", "だし巻き卵", "塩辛", "茶碗蒸し", "焼き魚"],
-      highball: ["揚げ物", "唐揚げ", "チーズ", "スルメ", "ピーナッツ"],
-      others: ["おつまみ各種"]
-    };
-
-    const surpriseSnacks = {
-      beer: ["チョコ", "クッキー", "ポップコーン", "フルーツ", "プリン"],
-      wine: ["ポテチ", "ナッツ", "チョコ", "せんべい", "サンドイッチ"],
-      whiskey: ["燻製チョコ", "キャラメル", "クッキー", "バナナ", "バタークッキー"],
-      sour: ["ポップコーン", "チョコ", "ポテチ", "ケーキ", "ゼリー"],
-      shochu: ["チョコ最中", "羊羹", "せんべい", "マドレーヌ", "ドーナツ"],
-      sake: ["バタークッキー", "チョコ", "プリン", "ラスク", "カステラ"],
-      highball: ["ドライフルーツ", "パイ", "クッキー", "ラムネ", "マシュマロ"],
-      others: ["意外な組み合わせは今後追加予定！"]
-    };
-
     let newResults = [];
 
+    // 5つのペアを作成するループ
     for (let i = 0; i < 5; i++) {
+      // ▼▼▼ 2. お酒をランダムに選出 ▼▼▼
       const randomBrand =
         categoryBrands.length > 0
-          ? getRandom(categoryBrands)
-          : { name: "ブランド情報なし" };
+          ? categoryBrands[Math.floor(Math.random() * categoryBrands.length)]
+          : { id: null, name: "ブランド情報なし" };
 
-      const classic = getRandom(classicSnacks[category]);
-      const surprise = getRandom(surpriseSnacks[category]);
+      // ▼▼▼ 3. 選ばれたお酒に合うおつまみを抽出 ▼▼▼
+      const matchingSnacks = allSnacks.filter((snack) => {
+        // カテゴリが違うものは除外
+        if (snack.category !== category) return false;
+
+        // 条件A: ID指定があり、かつIDが一致する場合（専用おつまみ）
+        if (snack.targetBrandId === randomBrand.id) return true;
+
+        // 条件B: ID指定がなく(null)、汎用として登録されている場合
+        if (snack.targetBrandId === null) return true;
+
+        return false;
+      });
+
+      // ▼▼▼ 4. 王道と意外に分けてランダム選出 ▼▼▼
+      const classicList = matchingSnacks.filter((s) => s.type === "classic");
+      const surpriseList = matchingSnacks.filter((s) => s.type === "surprise");
 
       newResults.push({
-        classic,
-        surprise,
-        brand: randomBrand.name
+        classic: getRandomName(classicList),
+        surprise: getRandomName(surpriseList),
+        brand: randomBrand.name,
       });
     }
 
@@ -75,13 +82,14 @@ export default function Home() {
         お酒の種類を選択：
       </label>
 
+      {/* ▼▼▼ 選択肢は brand.json のキーに合わせてください ▼▼▼ */}
       <select id="category" className="select-pop">
         <option value="none">選ばない</option>
         <option value="beer">ビール</option>
+        <option value="shochu">焼酎</option>
         <option value="wine">ワイン</option>
         <option value="whiskey">ウィスキー</option>
         <option value="sour">サワー</option>
-        <option value="shochu">焼酎</option>
         <option value="sake">日本酒</option>
         <option value="highball">ハイボール</option>
         <option value="others">その他</option>
@@ -94,7 +102,7 @@ export default function Home() {
         マッチを探す
       </button>
 
-      {/* ▼▼▼ 縦リスト表示 ▼▼▼ */}
+      {/* ▼▼▼ 結果表示エリア ▼▼▼ */}
       <div className="vertical-list-container">
         {results.map((item, index) => (
           <div className="vertical-item" key={index}>
@@ -108,7 +116,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-      {/* ▲▲▲ ここまで ▲▲▲ */}
 
       <Link to="/about" className="text-blue-600 underline block">
         紹介ページへジャンプ
