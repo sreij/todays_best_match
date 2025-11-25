@@ -112,7 +112,8 @@ export default function Home() {
             <div className="tag i">意外</div>
             <div className="value">{item.surprise}</div>
 
-            <div className="beer">🍺 {item.brand}</div>
+            <div className="tag b">お酒</div>
+            <div className="brand">{item.brand}</div>
           </div>
         ))}
       </div>
