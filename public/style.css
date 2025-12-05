@@ -168,27 +168,38 @@ button:hover {
 }
 
 /* ------------------------------
-   Result Items（カード縦）
+   Result Items（カード縦 → 2列対応）
 ------------------------------ */
+
+/* スマホ：1列のまま */
 .result-list {
   width: 70%;
   margin: 40px auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
+/* PC：2列にする */
+@media (min-width: 1024px) {
+  .result-list {
+    width: 90%;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
 .result-card {
+  display: block;  /* ★ これを追加して flex の影響を完全に切る */
   background: rgba(255, 255, 255, 0.85);
   border-left: 6px solid #ff9800;
   padding: 20px 26px;
   border-radius: 14px;
   box-shadow: 0 4px 14px rgba(255, 152, 0, 0.25);
-  display: flex;
-  flex-direction: column;
   gap: 10px;
   animation: fadeInUp 0.5s ease;
 }
+
 
 .result-card h3 {
   margin: 0;
@@ -324,6 +335,7 @@ button:hover {
   border-color: #ff6f00;
   box-shadow: 0 0 8px rgba(255, 111, 0, 0.4);
 }
+
 
 /* =========================================================
       ★ ここから追加：PC 画面専用のレイアウト最適化
