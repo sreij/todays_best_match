@@ -231,15 +231,12 @@ button:hover {
 /* ==========================================
       ★ ポップ化追加パート
 ========================================== */
-
-/* Pop fonts */
 .result-card,
 .vertical-list-container,
 .vertical-item {
   font-family: "Fredoka", "Kaisei Decol", "Noto Sans JP", sans-serif;
 }
 
-/* ラベルをポップな丸バッジに */
 .tag {
   background: #ffd59e;
   padding: 6px 14px;
@@ -250,7 +247,6 @@ button:hover {
   margin-bottom: 4px;
 }
 
-/* テキスト強調 */
 .value, 
 .brand, 
 .result-text {
@@ -258,7 +254,6 @@ button:hover {
   letter-spacing: 0.5px;
 }
 
-/* 結果をカードで区切る */
 .vertical-item {
   padding: 18px 24px;
   background: rgba(255, 255, 255, 0.9);
@@ -268,7 +263,6 @@ button:hover {
   margin-bottom: 20px;
 }
 
-/* ポップなヘッダー */
 .header {
   font-family: "Comic Sans MS", "Fredoka", "Rounded Mplus 1c", sans-serif;
   background: #ffb6c1;
@@ -282,11 +276,9 @@ button:hover {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-
 /* ==========================================
       ★ セレクトボックス（ポップ化）
 ========================================== */
-
 .label-pop {
   font-family: "Fredoka", "Kaisei Decol", "Noto Sans JP", sans-serif;
   color: #ff6f00;
@@ -319,4 +311,29 @@ button:hover {
   outline: none;
   border-color: #ff6f00;
   box-shadow: 0 0 8px rgba(255, 111, 0, 0.4);
+}
+
+/* =========================================================
+      ★ ここから追加：PC 画面専用のレイアウト最適化
+========================================================= */
+@media (min-width: 1024px) {
+
+  body {
+    font-size: 0.95rem; /* PCは少し文字を小さく */
+  }
+
+  main {
+    padding: 30px 40px; /* 余白縮小 */
+  }
+
+  .result-box,
+  .result-list,
+  .home-section textarea {
+    width: 90%; /* PCでは横幅広げる */
+  }
+
+  .result-card,
+  .vertical-item {
+    padding: 16px 20px; /* 少しコンパクト化 */
+  }
 }

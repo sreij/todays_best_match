@@ -41,7 +41,7 @@ export default function Home() {
     let newResults = [];
 
     // 5つのペアを作成するループ
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 6; i++) {
       // ▼▼▼ 2. お酒をランダムに選出 ▼▼▼
       const randomBrand =
         categoryBrands.length > 0
