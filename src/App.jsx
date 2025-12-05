@@ -3,6 +3,8 @@ import About from "./About.jsx";
 import Footer from "./Footer.jsx";
 import Header from "./Header.jsx";
 import Home from "./Home.jsx";
+import Osake from "./Osake.jsx";
+import Otsumami from "./Otsumami.jsx";
 
 export default function App() {
   return (
@@ -11,6 +13,8 @@ export default function App() {
           <Routes>
             <Route path='/' element={<Home />}/>
             <Route path='/about' element={<About />} />
+            <Route path='/Osake' element={<Osake />} />
+            <Route path='/Otsumami' element={<Otsumami />} />
           </Routes>
         <Footer />
     </BrowserRouter>
