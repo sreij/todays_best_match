@@ -103,9 +103,9 @@ export default function Home() {
       </button>
 
       {/* ▼▼▼ 結果表示エリア ▼▼▼ */}
-      <div className="vertical-list-container">
+      <div className="result-list">
         {results.map((item, index) => (
-          <div className="vertical-item" key={index}>
+          <div className="result-card" key={index}>
             <div className="tag o">王道</div>
             <div className="value">{item.classic}</div>
 
