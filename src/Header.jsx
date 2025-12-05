@@ -9,8 +9,7 @@ export default function Header() {
           <Link to="/"><img src="/pictures/Osake.png" alt="ロゴ画像" width={100} /></Link>
           <h1>今夜のベストマッチ！</h1>
         </div>
-
-      
+        <p>Edited by Team Osake</p>
       </header>
       <nav className="header-nav" aria-label="Main navigation">
         <Link to="/">Home</Link>
