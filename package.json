@@ -14,7 +14,8 @@
     "react-router-dom": "^7.9.6",
     "rollup": "^4.52.4",
     "source-map-js": "^1.2.1",
-    "tinyglobby": "^0.2.15"
+    "tinyglobby": "^0.2.15",
+    "wanakana": "^5.3.1"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.7.0",

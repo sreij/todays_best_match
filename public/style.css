@@ -390,3 +390,8 @@ button:hover {
     padding: 16px 20px; /* 少しコンパクト化 */
   }
 }
+
+/* 検索結果を常に4列表示にする */
+.search-grid {
+  grid-template-columns: repeat(4, 1fr) !important;
+}
