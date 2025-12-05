@@ -66,7 +66,7 @@ main {
 /* ------------------------------
    About Page
 ------------------------------ */
-main > section {
+section.about {
   width: 80%;
   max-width: 900px;
   margin: 40px auto;
@@ -79,20 +79,20 @@ main > section {
   line-height: 1.8;
 }
 
-main > section h1 {
+section.about h1 {
   margin-top: 0;
   font-size: 2rem;
   color: #e65100;
   letter-spacing: 0.6px;
 }
 
-main > section p {
+section.about p {
   font-size: 1.15rem;
   color: #444;
   margin-bottom: 18px;
 }
 
-main > section author {
+section.about author {
   display: block;
   margin-top: 12px;
   padding: 14px 18px;
@@ -103,13 +103,13 @@ main > section author {
   color: #6b3b00;
 }
 
-main > section author h2 {
+section.about author h2 {
   margin: 0 0 6px 0;
   font-size: 1.05rem;
   color: #d45a00;
 }
 
-main > section author h3 {
+section.about author h3 {
   margin: 0 0 10px 0;
   font-size: 1rem;
   color: #ff6f00;
@@ -117,12 +117,12 @@ main > section author h3 {
 
 /* Responsive tweaks for About page */
 @media (max-width: 700px) {
-  main > section {
+  section.about {
     width: 92%;
     padding: 18px;
   }
 
-  main > section h1 {
+  section.about h1 {
     font-size: 1.6rem;
   }
 }

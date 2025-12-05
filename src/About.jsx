@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function About() {
   return (
     <main>
-      <section>
+      <section className="about">
         <h1>このサイトについて</h1>
         <p>「今夜のベストマッチ！」は、お酒とおつまみの新しいマッチを見つけるためのサイトです。</p>
         <author>
