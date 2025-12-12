@@ -12,9 +12,9 @@ export default function Header() {
         <p>Edited by Team Osake</p>
       </header>
       <nav className="header-nav" aria-label="Main navigation">
-        <Link to="/">Home</Link>
-        <Link to="/Osake">Osake</Link>
-        <Link to="/Otsumami">Otsumami</Link>
+        <Link to="/">マッチを探す</Link>
+        <Link to="/Osake">お酒一覧</Link>
+        <Link to="/Otsumami">おつまみ一覧</Link>
         <Link to="/about">About</Link>
       </nav>
     </>
