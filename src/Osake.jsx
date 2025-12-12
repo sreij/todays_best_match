@@ -33,9 +33,11 @@ export default function Osake() {
     const results = brands.filter((item) => {
       const name = item.name || "";
       const brand = item.brand || "";
+      const reading = item.reading || "";
 
       const nameHira = toHiragana(name);
       const brandHira = toHiragana(brand);
+      const readingHira = toHiragana(reading);
 
       return (
         // 通常の日本語部分一致
@@ -44,7 +46,8 @@ export default function Osake() {
 
         // ひらがな部分一致（例：金麦 → きんむぎ）
         nameHira.includes(valueHira) ||
-        brandHira.includes(valueHira)
+        brandHira.includes(valueHira)  ||
+        (reading && readingHira.includes(valueHira))
       );
     });
 
