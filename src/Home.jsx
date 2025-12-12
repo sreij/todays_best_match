@@ -117,10 +117,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-
-      <Link to="/about" className="text-blue-600 underline block">
-        紹介ページへジャンプ
-      </Link>
     </main>
   );
 }

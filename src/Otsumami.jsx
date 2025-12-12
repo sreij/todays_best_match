@@ -84,10 +84,6 @@ export default function Otsumami() {
           <p>検索ワードを入力してください</p>
         )}
       </div>
-
-      <Link to="/" style={{ marginTop: "20px", display: "block" }}>
-        戻る
-      </Link>
     </main>
   );
 }

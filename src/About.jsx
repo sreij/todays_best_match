@@ -16,7 +16,6 @@ export default function About() {
         </author>
         このコンテンツは、日本大学文理学部情報科学科デジタルコンテンツの制作課題です。
       </section>
-      <Link to="/">戻る</Link>
     </main>
   );
 }
