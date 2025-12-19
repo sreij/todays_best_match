@@ -83,10 +83,6 @@ export default function Osake() {
           <p>該当するお酒はありません</p>
         )}
       </div>
-
-      <Link to="/" style={{ marginTop: "20px", display: "block" }}>
-        戻る
-      </Link>
     </main>
   );
 }

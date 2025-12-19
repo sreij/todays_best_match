@@ -14,8 +14,8 @@ export default function About() {
           5423060 中川 颯丈<br />
           5423020 齋藤 礼二
         </author>
+        このコンテンツは、日本大学文理学部情報科学科デジタルコンテンツの制作課題です。
       </section>
-      <Link to="/">戻る</Link>
     </main>
   );
 }
