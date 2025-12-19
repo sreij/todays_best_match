@@ -7,23 +7,25 @@ export default function Otsumami() {
   const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState([]);
 
-  // otumami.json の読み込み
+  // otsumami.json の読み込み
   useEffect(() => {
     fetch("/otsumami.json")
       .then((res) => res.json())
       .then((data) => {
         const all = Object.values(data).flat();
         setItems(all);
+        setFiltered(all); // ← 最初から全文表示
       });
   }, []);
 
-  // 検索処理
+  // 入力ごとに絞り込み
   const handleSearch = (e) => {
     const value = e.target.value;
     setQuery(value);
 
+    // 空なら全文表示
     if (!value.trim()) {
-      setFiltered([]);
+      setFiltered(items);
       return;
     }
 
@@ -42,7 +44,6 @@ export default function Otsumami() {
         name.includes(value) ||
         type.includes(value) ||
         source.includes(value) ||
-
         nameHira.includes(valueHira) ||
         typeHira.includes(valueHira) ||
         sourceHira.includes(valueHira)
@@ -56,7 +57,7 @@ export default function Otsumami() {
     <main style={{ padding: "20px" }}>
       <section>
         <h2>おつまみページ</h2>
-        <p>おつまみを名前で検索できます。</p>
+        <p>おつまみを一覧表示し、入力に応じて絞り込みできます。</p>
       </section>
 
       <section style={{ marginTop: "20px" }}>
@@ -69,6 +70,7 @@ export default function Otsumami() {
         />
       </section>
 
+      {/* ▼ 一覧表示 ▼ */}
       <div className="grid search-grid">
         {filtered.length > 0 ? (
           filtered.map((item) => (
@@ -78,12 +80,14 @@ export default function Otsumami() {
               <p>提供元: {item.source}</p>
             </div>
           ))
-        ) : query ? (
-          <p>該当なし</p>
         ) : (
-          <p>検索ワードを入力してください</p>
+          <p>該当するおつまみはありません</p>
         )}
       </div>
+
+      <Link to="/" style={{ marginTop: "20px", display: "block" }}>
+        戻る
+      </Link>
     </main>
   );
 }
