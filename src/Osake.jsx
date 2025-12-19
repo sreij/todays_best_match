@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { toHiragana } from "wanakana"; // ← 追加（漢字 → ひらがな変換）
+import { toHiragana } from "wanakana";
 
 export default function Osake() {
   const [brands, setBrands] = useState([]);
@@ -12,23 +12,25 @@ export default function Osake() {
     fetch("/brand.json")
       .then((res) => res.json())
       .then((data) => {
-        // beer / chuhai / sake など全カテゴリーを統合して 1 配列にする
+        // 全カテゴリーを1配列にまとめる
         const all = Object.values(data).flat();
         setBrands(all);
+        setFiltered(all); // ← 最初から全文表示
       });
   }, []);
 
-  // 検索処理（ひらがな対応）
+  // 入力ごとに絞り込み
   const handleSearch = (e) => {
     const value = e.target.value;
     setQuery(value);
 
+    // 空なら全文表示に戻す
     if (!value.trim()) {
-      setFiltered([]);
+      setFiltered(brands);
       return;
     }
 
-    const valueHira = toHiragana(value); // 入力をひらがな化
+    const valueHira = toHiragana(value);
 
     const results = brands.filter((item) => {
       const name = item.name || "";
@@ -40,13 +42,10 @@ export default function Osake() {
       const readingHira = toHiragana(reading);
 
       return (
-        // 通常の日本語部分一致
         name.includes(value) ||
         brand.includes(value) ||
-
-        // ひらがな部分一致（例：金麦 → きんむぎ）
         nameHira.includes(valueHira) ||
-        brandHira.includes(valueHira)  ||
+        brandHira.includes(valueHira) ||
         (reading && readingHira.includes(valueHira))
       );
     });
@@ -58,7 +57,7 @@ export default function Osake() {
     <main style={{ padding: "20px" }}>
       <section>
         <h2>お酒のページ</h2>
-        <p>ここはお酒の詳細情報を表示するページです。</p>
+        <p>お酒を一覧表示し、入力に応じて絞り込みできます。</p>
       </section>
 
       <section style={{ marginTop: "20px" }}>
@@ -71,7 +70,7 @@ export default function Osake() {
         />
       </section>
 
-      {/* ▼ 4列固定のタイル表示 ▼ */}
+      {/* ▼ 一覧表示（常に filtered を表示） ▼ */}
       <div className="grid search-grid">
         {filtered.length > 0 ? (
           filtered.map((item) => (
@@ -80,10 +79,8 @@ export default function Osake() {
               <p>{item.brand}</p>
             </div>
           ))
-        ) : query ? (
-          <p>該当なし</p>
         ) : (
-          <p>検索ワードを入力してください</p>
+          <p>該当するお酒はありません</p>
         )}
       </div>
 
