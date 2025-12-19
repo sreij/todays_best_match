@@ -36,6 +36,8 @@ export default function Home() {
       return;
     }
 
+    setResults([]);
+
     // 選ばれたカテゴリのお酒リストを取得
     const categoryBrands = brands[category] || [];
     let newResults = [];
@@ -73,7 +75,9 @@ export default function Home() {
       });
     }
 
-    setResults(newResults);
+    setTimeout(() => {
+      setResults(newResults);
+    }, 10);
   };
 
   return (
@@ -105,18 +109,23 @@ export default function Home() {
       {/* ▼▼▼ 結果表示エリア ▼▼▼ */}
       <div className="result-list">
         {results.map((item, index) => (
-          <div className="result-card" key={index}>
-            <div className="tag o">王道</div>
-            <div className="value">{item.classic}</div>
-
-            <div className="tag i">意外</div>
-            <div className="value">{item.surprise}</div>
-
-            <div className="tag b">お酒</div>
-            <div className="brand">{item.brand}</div>
-          </div>
-        ))}
-      </div>
+          <div
+          className="grid-item"
+          key={`${item.brand}-${index}-${Date.now()}`}
+         // ★ keyを少し強化
+          style={{ animationDelay: `${index * 0.08}s` }} // ★ 順番にふわっ
+        >
+          <div className="tag o">王道</div>
+          <div className="value">{item.classic}</div>
+          
+          <div className="tag i">意外</div>
+          <div className="value">{item.surprise}</div>
+          
+          <div className="tag b">お酒</div>
+          <div className="brand">{item.brand}</div>
+        </div>
+      ))}
+    </div>
     </main>
   );
 }
