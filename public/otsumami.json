@@ -317,5 +317,11 @@
     { "id": 316, "name": "真鯛の刺身", "type": "classic", "category": "beer", "targetBrandId": null, "source": "Asahi" },
     { "id": 317, "name": "真鯛の刺身", "type": "classic", "category": "wine", "targetBrandId": null, "source": "Asahi" },
     { "id": 318, "name": "完熟トマトと豆腐の和風カプレーゼ", "type": "classic", "category": "beer", "targetBrandId": null, "source": "Asahi" },
-    { "id": 319, "name": "完熟トマトと豆腐の和風カプレーゼ", "type": "classic", "category": "wine", "targetBrandId": null, "source": "Asahi" }
+    { "id": 319, "name": "完熟トマトと豆腐の和風カプレーゼ", "type": "classic", "category": "wine", "targetBrandId": null, "source": "Asahi" },
+    { "id": 320, "name": "なんちゃってラーメン", "type": "surprise", "category": "beer", "targetBrandId": null, "source": "Asahi" },
+    { "id": 321, "name": "ズワイ蟹とアボカドの酒盗和え", "type": "classic", "category": "beer", "targetBrandId": null, "source": "Asahi" },
+    { "id": 322, "name": "カマンベールチーズの生ハム巻き～ジャム添え～", "type": "classic", "category": "beer", "targetBrandId": null, "source": "Asahi" },
+    { "id": 323, "name": "カマンベールチーズの生ハム巻き～ジャム添え～", "type": "classic", "category": "wine", "targetBrandId": null, "source": "Asahi" },
+    { "id": 324, "name": "アーモンドチョコフレーク", "type": "surprise", "category": "beer", "targetBrandId": null, "source": "Asahi" },
+    { "id": 325, "name": "ちくわのタコ焼き風", "type": "classic", "category": "beer", "targetBrandId": null, "source": "Asahi" }
 ]
