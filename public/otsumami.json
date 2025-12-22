@@ -432,5 +432,16 @@
     { "id": 431, "name": "オクラの白和え", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
     { "id": 432, "name": "いかとモロヘイヤのポン酢じょうゆ和え", "type": "classic", "category": "shochu", "targetBrandId": null, "source": "サッポロ" },
     { "id": 433, "name": "ツナのユッケ風", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
-    { "id": 434, "name": "豆腐のジョン", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" }
+    { "id": 434, "name": "豆腐のジョン", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 435, "name": "黒ビールとマンゴーのゼリー", "type": "surprise", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 436, "name": "ミニトマトのファルシ", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 437, "name": "揚げワンタン", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 438, "name": "たけのこのハーブマヨ焼き", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 439, "name": "大豆とツナのレンジカレー", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 440, "name": "さばのタイ風和えもの", "type": "surprise", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 441, "name": "キャベツのホエイピクルス", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 442, "name": "フライド長いも", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 443, "name": "トマトのオイスターあんかけ", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 444, "name": "巻き巻き焼き肉", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ" },
+    { "id": 445, "name": "水切りヨーグルトのティラミス風", "type": "surprise", "category": "wine", "targetBrandId": null, "source": "サッポロ" }
 ]
