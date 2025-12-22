@@ -30,29 +30,25 @@ export default function Home() {
       return;
     }
 
-    // 1. ユーザーが選んだカテゴリに合うおつまみだけを抽出
+    setResults([]);
+
     const categorySnacks = allSnacks.filter((s) => s.category === category);
     const surprisePool = categorySnacks.filter((s) => s.type === "surprise");
+    const categoryBrands = brands[category] || [];
     
     let newResults = [];
-    const categoryBrands = brands[category] || [];
 
     for (let i = 0; i < 6; i++) {
-      // 2. そのカテゴリの中から「意外（surprise）」のおつまみをランダムに1つ選ぶ
       const selectedSurprise = getRandomItem(surprisePool);
       
-      // 3. そのおつまみに合うお酒（ブランド）を決定する
       let selectedBrand;
       if (selectedSurprise.targetBrandId !== null) {
-        // おつまみに特定の銘柄(金麦など)が指定されている場合、それを探す
         selectedBrand = categoryBrands.find(b => b.id === selectedSurprise.targetBrandId) 
                         || getRandomItem(categoryBrands);
       } else {
-        // 指定がない場合はそのカテゴリ(ビール等)からランダムに選ぶ
         selectedBrand = getRandomItem(categoryBrands);
       }
 
-      // 4. 決まったお酒に合う「王道（classic）」のおつまみを探す
       const classicPool = categorySnacks.filter((snack) => {
         if (snack.type !== "classic") return false;
         return snack.targetBrandId === selectedBrand.id || snack.targetBrandId === null;
@@ -64,7 +60,10 @@ export default function Home() {
         brand: selectedBrand,
       });
     }
-    setResults(newResults);
+
+    setTimeout(() => {
+      setResults(newResults);
+    }, 10);
   };
 
   return (
@@ -86,19 +85,31 @@ export default function Home() {
         マッチを探す
       </button>
 
+      {}
       <div className="result-list">
         {results.map((item, index) => (
-          <div className="result-card" key={index} onClick={() => setSelectedMatch(item)} style={{ cursor: "pointer" }}>
+          <div 
+            className="result-card" 
+            key={`${item.brand.id}-${index}-${Date.now()}`}
+            onClick={() => setSelectedMatch(item)} 
+            style={{ 
+              cursor: "pointer",
+              animationDelay: `${index * 0.08}s` 
+            }}
+          >
             <div className="tag o">王道</div>
             <div className="value">{item.classic.name}</div>
+
             <div className="tag i">意外</div>
             <div className="value">{item.surprise.name}</div>
+
             <div className="tag b">お酒</div>
             <div className="brand">{item.brand.name}</div>
           </div>
         ))}
       </div>
 
+      {}
       {selectedMatch && (
         <div className="modal-overlay" onClick={() => setSelectedMatch(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -108,14 +119,14 @@ export default function Home() {
             <div className="detail-section">
               <h3>🍺 お酒</h3>
               <p className="detail-text">{selectedMatch.brand.name}</p>
-              {selectedMatch.brand.brand && <p className="detail-sub">{selectedMatch.brand.brand}</p>}
+              {selectedMatch.brand.brand && <p className="detail-sub">メーカー: {selectedMatch.brand.brand}</p>}
             </div>
 
             <div className="detail-section classic-bg">
               <h3>👑 王道: {selectedMatch.classic.name}</h3>
               <p className="detail-sub">提供元: {selectedMatch.classic.source}</p>
               {selectedMatch.classic.url && (
-                <a href={selectedMatch.classic.url} target="_blank" rel="noopener noreferrer" className="detail-link">👉 公式サイトを見る</a>
+                <a href={selectedMatch.classic.url} target="_blank" rel="noopener noreferrer" className="detail-link">👉 レシピ/公式サイトを見る</a>
               )}
             </div>
 
@@ -123,7 +134,7 @@ export default function Home() {
               <h3>😲 意外: {selectedMatch.surprise.name}</h3>
               <p className="detail-sub">提供元: {selectedMatch.surprise.source}</p>
               {selectedMatch.surprise.url && (
-                <a href={selectedMatch.surprise.url} target="_blank" rel="noopener noreferrer" className="detail-link">👉 公式サイトを見る</a>
+                <a href={selectedMatch.surprise.url} target="_blank" rel="noopener noreferrer" className="detail-link">👉 レシピ/公式サイトを見る</a>
               )}
             </div>
           </div>

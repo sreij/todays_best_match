@@ -184,6 +184,7 @@ button:hover {
   border: 1px solid rgba(255, 183, 77, 0.5);
   box-shadow: 0 4px 12px rgba(255, 167, 38, 0.25);
   transition: 0.25s;
+  
 }
 
 .grid-item:hover {
@@ -254,15 +255,42 @@ button:hover {
 }
 
 .result-card {
-  display: block;  /* ★ これを追加して flex の影響を完全に切る */
-  background: rgba(255, 255, 255, 0.85);
-  border-left: 6px solid #ff9800;
+  /* ===== 見た目（grid-item + result-card 統合） ===== */
+  display: block;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+
   padding: 20px 26px;
-  border-radius: 14px;
-  box-shadow: 0 4px 14px rgba(255, 152, 0, 0.25);
-  gap: 10px;
-  animation: fadeInUp 0.5s ease;
+  border-radius: 16px;
+
+  border: 1px solid rgba(255, 183, 77, 0.5);
+  border-left: 6px solid #ff9800;
+
+  box-shadow: 0 4px 14px rgba(255, 167, 38, 0.25);
+
+  /* ===== 出現アニメーション ===== */
+  opacity: 0;
+  animation-name: fadeInUp;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+  animation-fill-mode: both;
+
+  /* ===== hover アニメーション ===== */
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+
+  cursor: pointer;
+  position: relative;
 }
+
+/* hover時（grid-item の動きを再現） */
+.result-card:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 28px rgba(255, 167, 38, 0.35);
+  z-index: 10;
+}
+
 
 
 .result-card h3 {
@@ -514,12 +542,12 @@ button:hover {
 }
 
 .classic-bg {
-  background-color: #fff4e6; /* 薄いオレンジ */
+  background-color: #fff4e6; 
   border-left: 5px solid #ff9f43;
 }
 
 .surprise-bg {
-  background-color: #e6f7ff; /* 薄い青 */
+  background-color: #e6f7ff; 
   border-left: 5px solid #54a0ff;
 }
 
