@@ -68,6 +68,7 @@
     { "id": 67, "name": "柿とモッツァレラと生ハムの和え物", "type": "classic", "category": "wine", "targetBrandId": null, "source": "キリン" ,"url":"https://recipe.kirin.co.jp/a02070.html"},
     { "id": 68, "name": "ザーサイ冷奴", "type": "classic", "category": "beer", "targetBrandId": null, "source": "キリン" ,"url":"https://recipe.kirin.co.jp/a02272.html"},
     { "id": 69, "name": "ザーサイ冷奴", "type": "classic", "category": "shochu", "targetBrandId": null, "source": "キリン" ,"url":"https://recipe.kirin.co.jp/a02272.html"},
+<<<<<<< HEAD
     { "id": 70, "name": "サーモンの薬味しょうゆあえ", "type": "classic", "category": "beer", "targetBrandId": null, "source": "キリン" ,"url":"https://recipe.kirin.co.jp/a03531.html"},
     { "id": 71, "name": "サーモンの薬味しょうゆあえ", "type": "classic", "category": "wine", "targetBrandId": null, "source": "キリン" ,"url":"https://recipe.kirin.co.jp/a03531.html"},
     { "id": 72, "name": "シャキシャキじゃがいものゆずこしょうマヨあえ", "type": "classic", "category": "beer", "targetBrandId": null, "source": "キリン","url":"https://recipe.kirin.co.jp/a03026.html" },
@@ -429,5 +430,16 @@
     { "id": 431, "name": "オクラの白和え", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000015955/" },
     { "id": 432, "name": "いかとモロヘイヤのポン酢じょうゆ和え", "type": "classic", "category": "shochu", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001151/" },
     { "id": 433, "name": "ツナのユッケ風", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000014926/" },
-    { "id": 434, "name": "豆腐のジョン", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001715/" }
+    { "id": 434, "name": "豆腐のジョン", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001715/" },
+    { "id": 435, "name": "黒ビールとマンゴーのゼリー", "type": "surprise", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001289/" },
+    { "id": 436, "name": "ミニトマトのファルシ", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000011734/" },
+    { "id": 437, "name": "揚げワンタン", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001321/" },
+    { "id": 438, "name": "たけのこのハーブマヨ焼き", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001722/" },
+    { "id": 439, "name": "大豆とツナのレンジカレー", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001693/" },
+    { "id": 440, "name": "さばのタイ風和えもの", "type": "surprise", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001482/" },
+    { "id": 441, "name": "キャベツのホエイピクルス", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000014902/" },
+    { "id": 442, "name": "フライド長いも", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001740/" },
+    { "id": 443, "name": "トマトのオイスターあんかけ", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001594/" },
+    { "id": 444, "name": "巻き巻き焼き肉", "type": "classic", "category": "beer", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000001298/" },
+    { "id": 445, "name": "水切りヨーグルトのティラミス風", "type": "surprise", "category": "wine", "targetBrandId": null, "source": "サッポロ", "url": "https://www.sapporobeer.jp/feature/recipe/0000017437/" }
 ]
