@@ -487,3 +487,101 @@ button:hover {
 .search-grid {
   grid-template-columns: repeat(4, 1fr) !important;
 }
+
+/* ▼▼▼ モーダルウィンドウ用のスタイル ▼▼▼ */
+
+/* 画面全体を覆う黒い背景 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* 半透明の黒 */
+  display: flex;
+  justify-content: center; /* 左右中央 */
+  align-items: center;     /* 上下中央 */
+  z-index: 1000;           /* 一番手前に表示 */
+}
+
+/* 白いウィンドウ部分 */
+.modal-content {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 500px; /* PCでも広がりすぎないように */
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: fadeIn 0.3s ease; /* ふわっと表示 */
+}
+
+/* 閉じるボタン */
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+}
+
+.modal-title {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.detail-section {
+  margin-bottom: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+}
+
+.classic-bg {
+  background-color: #fff4e6; 
+  border-left: 5px solid #ff9f43;
+}
+
+.surprise-bg {
+  background-color: #e6f7ff; 
+  border-left: 5px solid #54a0ff;
+}
+
+.detail-section h3 {
+  margin-top: 0;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.detail-text {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.detail-sub {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.detail-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.detail-link:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

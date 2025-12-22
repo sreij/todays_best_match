@@ -1,14 +1,12 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 export default function Home() {
   const [results, setResults] = useState([]);
-  const [brands, setBrands] = useState({}); // brand.json のデータ
-  const [allSnacks, setAllSnacks] = useState([]); // otsumami.json のデータ
+  const [brands, setBrands] = useState({});
+  const [allSnacks, setAllSnacks] = useState([]);
+  const [selectedMatch, setSelectedMatch] = useState(null);
 
-  // ▼▼▼ 1. データ読み込み ▼▼▼
   useEffect(() => {
-    // brand.json と otsumami.json を同時に読み込む
     Promise.all([
       fetch("/brand.json").then((res) => res.json()),
       fetch("/otsumami.json").then((res) => res.json()),
@@ -20,17 +18,13 @@ export default function Home() {
       .catch((error) => console.error("データの読み込みに失敗しました:", error));
   }, []);
 
-  // 配列からランダムに1つ要素（名前）を取得する関数
-  const getRandomName = (arr) => {
-    if (!arr || arr.length === 0) return "該当なし";
-    const item = arr[Math.floor(Math.random() * arr.length)];
-    return item.name;
+  const getRandomItem = (arr) => {
+    if (!arr || arr.length === 0) return { name: "該当なし", url: "", source: "" };
+    return arr[Math.floor(Math.random() * arr.length)];
   };
 
   const handleMatch = () => {
     const category = document.getElementById("category").value;
-
-    // 「選ばない」が選ばれた場合
     if (category === "none") {
       setResults([]);
       return;
@@ -38,40 +32,32 @@ export default function Home() {
 
     setResults([]);
 
-    // 選ばれたカテゴリのお酒リストを取得
+    const categorySnacks = allSnacks.filter((s) => s.category === category);
+    const surprisePool = categorySnacks.filter((s) => s.type === "surprise");
     const categoryBrands = brands[category] || [];
+    
     let newResults = [];
 
-    // 5つのペアを作成するループ
     for (let i = 0; i < 6; i++) {
-      // ▼▼▼ 2. お酒をランダムに選出 ▼▼▼
-      const randomBrand =
-        categoryBrands.length > 0
-          ? categoryBrands[Math.floor(Math.random() * categoryBrands.length)]
-          : { id: null, name: "ブランド情報なし" };
+      const selectedSurprise = getRandomItem(surprisePool);
+      
+      let selectedBrand;
+      if (selectedSurprise.targetBrandId !== null) {
+        selectedBrand = categoryBrands.find(b => b.id === selectedSurprise.targetBrandId) 
+                        || getRandomItem(categoryBrands);
+      } else {
+        selectedBrand = getRandomItem(categoryBrands);
+      }
 
-      // ▼▼▼ 3. 選ばれたお酒に合うおつまみを抽出 ▼▼▼
-      const matchingSnacks = allSnacks.filter((snack) => {
-        // カテゴリが違うものは除外
-        if (snack.category !== category) return false;
-
-        // 条件A: ID指定があり、かつIDが一致する場合（専用おつまみ）
-        if (snack.targetBrandId === randomBrand.id) return true;
-
-        // 条件B: ID指定がなく(null)、汎用として登録されている場合
-        if (snack.targetBrandId === null) return true;
-
-        return false;
+      const classicPool = categorySnacks.filter((snack) => {
+        if (snack.type !== "classic") return false;
+        return snack.targetBrandId === selectedBrand.id || snack.targetBrandId === null;
       });
 
-      // ▼▼▼ 4. 王道と意外に分けてランダム選出 ▼▼▼
-      const classicList = matchingSnacks.filter((s) => s.type === "classic");
-      const surpriseList = matchingSnacks.filter((s) => s.type === "surprise");
-
       newResults.push({
-        classic: getRandomName(classicList),
-        surprise: getRandomName(surpriseList),
-        brand: randomBrand.name,
+        classic: getRandomItem(classicPool),
+        surprise: selectedSurprise,
+        brand: selectedBrand,
       });
     }
 
@@ -82,11 +68,7 @@ export default function Home() {
 
   return (
     <main className="p-4 space-y-4">
-      <label htmlFor="category" className="label-pop">
-        お酒の種類を選択：
-      </label>
-
-      {/* ▼▼▼ 選択肢は brand.json のキーに合わせてください ▼▼▼ */}
+      <label htmlFor="category" className="label-pop">お酒の種類を選択：</label>
       <select id="category" className="select-pop">
         <option value="none">選ばない</option>
         <option value="beer">ビール</option>
@@ -99,33 +81,65 @@ export default function Home() {
         <option value="others">その他</option>
       </select>
 
-      <button
-        onClick={handleMatch}
-        className="bg-blue-500 text-white px-4 py-2 rounded"
-      >
+      <button onClick={handleMatch} className="bg-blue-500 text-white px-4 py-2 rounded">
         マッチを探す
       </button>
 
-      {/* ▼▼▼ 結果表示エリア ▼▼▼ */}
+      {}
       <div className="result-list">
         {results.map((item, index) => (
-          <div
-          className="grid-item"
-          key={`${item.brand}-${index}-${Date.now()}`}
-         // ★ keyを少し強化
-          style={{ animationDelay: `${index * 0.08}s` }} // ★ 順番にふわっ
-        >
-          <div className="tag o">王道</div>
-          <div className="value">{item.classic}</div>
-          
-          <div className="tag i">意外</div>
-          <div className="value">{item.surprise}</div>
-          
-          <div className="tag b">お酒</div>
-          <div className="brand">{item.brand}</div>
+          <div 
+            className="result-card" 
+            key={`${item.brand.id}-${index}-${Date.now()}`}
+            onClick={() => setSelectedMatch(item)} 
+            style={{ 
+              cursor: "pointer",
+              animationDelay: `${index * 0.08}s` 
+            }}
+          >
+            <div className="tag o">王道</div>
+            <div className="value">{item.classic.name}</div>
+
+            <div className="tag i">意外</div>
+            <div className="value">{item.surprise.name}</div>
+
+            <div className="tag b">お酒</div>
+            <div className="brand">{item.brand.name}</div>
+          </div>
+        ))}
+      </div>
+
+      {}
+      {selectedMatch && (
+        <div className="modal-overlay" onClick={() => setSelectedMatch(null)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button className="close-button" onClick={() => setSelectedMatch(null)}>×</button>
+            <h2 className="modal-title">ペアリング詳細</h2>
+            
+            <div className="detail-section">
+              <h3>🍺 お酒</h3>
+              <p className="detail-text">{selectedMatch.brand.name}</p>
+              {selectedMatch.brand.brand && <p className="detail-sub">メーカー: {selectedMatch.brand.brand}</p>}
+            </div>
+
+            <div className="detail-section classic-bg">
+              <h3>👑 王道: {selectedMatch.classic.name}</h3>
+              <p className="detail-sub">提供元: {selectedMatch.classic.source}</p>
+              {selectedMatch.classic.url && (
+                <a href={selectedMatch.classic.url} target="_blank" rel="noopener noreferrer" className="detail-link">👉 レシピ/公式サイトを見る</a>
+              )}
+            </div>
+
+            <div className="detail-section surprise-bg">
+              <h3>😲 意外: {selectedMatch.surprise.name}</h3>
+              <p className="detail-sub">提供元: {selectedMatch.surprise.source}</p>
+              {selectedMatch.surprise.url && (
+                <a href={selectedMatch.surprise.url} target="_blank" rel="noopener noreferrer" className="detail-link">👉 レシピ/公式サイトを見る</a>
+              )}
+            </div>
+          </div>
         </div>
-      ))}
-    </div>
+      )}
     </main>
   );
 }
