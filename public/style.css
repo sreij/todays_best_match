@@ -92,6 +92,23 @@ section.about p {
   margin-bottom: 18px;
 }
 
+section.about .intro-movie {
+  display: block;
+  margin-top: 20px;
+  padding: 14px 18px;
+  background: #fffaf2;
+  border-left: 6px solid #ff9800;
+  border-radius: 10px;
+  font-weight: 600;
+  color: #6b3b00;
+}
+
+section.about .intro-movie h2 {
+  margin: 0 0 6px 0;
+  font-size: 1.05rem;
+  color: #d45a00;
+}
+
 section.about author {
   display: block;
   margin-top: 12px;
