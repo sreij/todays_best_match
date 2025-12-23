@@ -18,7 +18,7 @@ const sources = [
 export default function Otsumami() {
   const [items, setItems] = useState([]);
   const [query, setQuery] = useState("");
-  const [sourceFilter, setSourceFilter] = useState("選ばない"); 
+  const [sourceFilter, setSourceFilter] = useState("選ばない");
   const [filtered, setFiltered] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
 
@@ -28,7 +28,7 @@ export default function Otsumami() {
       .then((data) => {
         const all = Object.values(data).flat();
         setItems(all);
-        setFiltered(all); 
+        setFiltered(all);
       });
   }, []);
 
@@ -76,43 +76,31 @@ export default function Otsumami() {
     }
 
     setFiltered(uniqueResults);
-
-  }, [query, sourceFilter, items]); 
+  }, [query, sourceFilter, items]);
 
   return (
-    <main style={{ padding: "20px" }}>
-      <section>
+    <main>
+      <section className="about" style={{ marginTop: "20px", marginBottom: "20px" }}>
         <h2>おつまみページ</h2>
         <p>おつまみを一覧表示し、入力に応じて絞り込みできます。</p>
       </section>
 
-      <section style={{ marginTop: "20px" }}>
-        <h3>おつまみを検索</h3>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", alignItems: "center" }}>
+      <section style={{ marginTop: "20px", textAlign: "center" }}>
+        <h3 className="label-pop">おつまみを検索</h3>
+        
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "15px", justifyContent: "center", alignItems: "center", marginTop: "10px" }}>
           <input
             type="text"
             placeholder="おつまみの名前を検索…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            style={{ 
-              padding: "8px", 
-              fontSize: "16px", 
-              minWidth: "250px",
-              border: "1px solid #ccc",
-              borderRadius: "4px"
-            }}
+            style={{ width: "300px" }} 
           />
 
           <select
+            className="select-pop"
             value={sourceFilter}
             onChange={(e) => setSourceFilter(e.target.value)}
-            style={{ 
-              padding: "8px", 
-              fontSize: "16px", 
-              cursor: "pointer",
-              border: "1px solid #ccc",
-              borderRadius: "4px"
-            }}
           >
             {sources.map((source) => (
               <option key={source} value={source}>
@@ -123,7 +111,7 @@ export default function Otsumami() {
         </div>
       </section>
 
-      <div className="grid search-grid" style={{ marginTop: "20px" }}>
+      <div className="grid search-grid" style={{ marginTop: "40px" }}>
         {filtered.length > 0 ? (
           filtered.map((item) => (
             <div
@@ -132,22 +120,26 @@ export default function Otsumami() {
               onClick={() => setSelectedItem(item)}
               style={{ cursor: "pointer" }}
             >
-              <h3>{item.name}</h3>
-              <p>種類: {item.type === "classic" ? "王道" : "意外"}</p>
-              <p>提供元: {item.source}</p>
-              <p style={{ color: "#005fccff", fontSize: "0.9em", marginTop: "10px" }}>
+              <h3 style={{ fontSize: "1.1rem", margin: "0 0 10px 0", color: "#e65100" }}>{item.name}</h3>
+              <div style={{ fontSize: "0.95rem", color: "#555" }}>
+                <p style={{ margin: "5px 0" }}>種類: <span style={{ fontWeight: "bold" }}>{item.type === "classic" ? "王道" : "意外"}</span></p>
+                <p style={{ margin: "5px 0" }}>提供元: {item.source}</p>
+              </div>
+              <p style={{ color: "#005fcc", fontSize: "0.85rem", marginTop: "15px", textDecoration: "underline" }}>
                 詳細はクリック！
               </p>
             </div>
           ))
         ) : (
-          <p>該当するおつまみはありません</p>
+          <p style={{ gridColumn: "1 / -1", textAlign: "center", color: "#777" }}>該当するおつまみはありません</p>
         )}
       </div>
 
-      <Link to="/" style={{ marginTop: "20px", display: "block" }}>
-        戻る
-      </Link>
+      <div style={{ textAlign: "center", marginTop: "40px" }}>
+        <Link to="/" style={{ textDecoration: "none" }}>
+            <button>戻る</button>
+        </Link>
+      </div>
 
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
@@ -155,27 +147,51 @@ export default function Otsumami() {
             <button className="close-button" onClick={() => setSelectedItem(null)}>
               ×
             </button>
-            <h2 className="modal-title">おつまみ詳細</h2>
+            <h2 className="modal-title" style={{ color: "#d45a00", borderBottom: "2px solid #ffe0b2", paddingBottom: "10px" }}>おつまみ詳細</h2>
 
             <div
               className={`detail-section ${
                 selectedItem.type === "surprise" ? "surprise-bg" : "classic-bg"
               }`}
+              style={{ marginTop: "20px" }}
             >
-              <h3>{selectedItem.name}</h3>
-              <p className="detail-sub">
-                種類: {selectedItem.type === "classic" ? "王道" : "意外"}
-              </p>
-              <p className="detail-sub">提供元: {selectedItem.source}</p>
+              <h3 style={{ fontSize: "1.4rem", color: "#333", marginBottom: "15px" }}>{selectedItem.name}</h3>
+              
+              <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "20px" }}>
+                <p className="detail-sub" style={{ fontSize: "1rem" }}>
+                  <span style={{ fontWeight: "bold", color: "#ff6f00" }}>種類:</span> {selectedItem.type === "classic" ? "王道" : "意外"}
+                </p>
+                <p className="detail-sub" style={{ fontSize: "1rem" }}>
+                  <span style={{ fontWeight: "bold", color: "#ff6f00" }}>提供元:</span> {selectedItem.source}
+                </p>
+              </div>
 
-              <div style={{ marginTop: "15px" }}>
+              <div style={{ marginTop: "25px", textAlign: "center" }}>
                 <a
                   href={selectedItem.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="detail-link"
+                  style={{ 
+                    display: "inline-block", 
+                    padding: "10px 20px", 
+                    backgroundColor: "#fff", 
+                    border: "2px solid #007bff", 
+                    borderRadius: "30px",
+                    textDecoration: "none",
+                    color: "#007bff",
+                    transition: "0.3s"
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.backgroundColor = "#007bff";
+                    e.currentTarget.style.color = "#fff";
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.backgroundColor = "#fff";
+                    e.currentTarget.style.color = "#007bff";
+                  }}
                 >
-                  おつまみのリンク（レシピ/公式サイト）
+                  公式サイトでレシピを見る
                 </a>
               </div>
             </div>
