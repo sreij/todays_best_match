@@ -83,9 +83,9 @@ export default function Otsumami() {
               style={{ cursor: "pointer" }} // クリックできることを示す
             >
               <h3>{item.name}</h3>
-              <p>種類: {item.type}</p>
+              <p>種類: {item.type == "classic" ? "王道" : "意外"}</p>
               <p>提供元: {item.source}</p>
-              <p style={{ color: "#0063ccff", fontSize: "0.9em", marginTop: "10px" }}>
+              <p style={{ color: "#005fccff", fontSize: "0.9em", marginTop: "10px" }}>
                  詳細はクリック！
               </p>
             </div>
