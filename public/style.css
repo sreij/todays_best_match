@@ -1,6 +1,3 @@
-/* ------------------------------
-   Base
------------------------------- */
 body {
   font-family: "Noto Sans JP", sans-serif;
   background: linear-gradient(135deg, #fff7e6, #ffe0b2);
@@ -9,9 +6,6 @@ body {
   min-height: 100vh;
 }
 
-/* ------------------------------
-   Header
------------------------------- */
 header {
   display: flex;
   align-items: center;
@@ -55,17 +49,11 @@ input[type="text"]:focus {
   color: #ff9800;
 }
 
-/* ------------------------------
-   Main
------------------------------- */
 main {
   text-align: center;
   padding: 50px 20px;
 }
 
-/* ------------------------------
-   About Page
------------------------------- */
 section.about {
   width: 80%;
   max-width: 900px;
@@ -132,7 +120,6 @@ section.about author h3 {
   color: #ff6f00;
 }
 
-/* Responsive tweaks for About page */
 @media (max-width: 700px) {
   section.about {
     width: 92%;
@@ -144,7 +131,6 @@ section.about author h3 {
   }
 }
 
-/* Textarea card */
 .home-section textarea {
   width: 65%;
   height: 130px;
@@ -164,7 +150,6 @@ section.about author h3 {
   outline: none;
 }
 
-/* Button */
 button {
   margin-top: 25px;
   padding: 12px 26px;
@@ -183,9 +168,6 @@ button:hover {
   box-shadow: 0 6px 16px rgba(255, 111, 0, 0.45);
 }
 
-/* ------------------------------
-   Grid
------------------------------- */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
@@ -209,9 +191,6 @@ button:hover {
   box-shadow: 0 8px 20px rgba(255, 167, 38, 0.35);
 }
 
-/* ------------------------------
-   Result Box
------------------------------- */
 .result-box {
   margin: 40px auto;
   padding: 45px;
@@ -224,7 +203,6 @@ button:hover {
   animation: fadeIn 0.6s ease;
 }
 
-/* Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -236,7 +214,6 @@ button:hover {
   }
 }
 
-/* Header left */
 .header-left {
   display: flex;
   align-items: center;
@@ -249,11 +226,6 @@ button:hover {
   line-height: 1;
 }
 
-/* ------------------------------
-   Result Items（カード縦 → 2列対応）
------------------------------- */
-
-/* スマホ：1列のまま */
 .result-list {
   width: 70%;
   margin: 40px auto;
@@ -262,7 +234,6 @@ button:hover {
   gap: 20px;
 }
 
-/* PC：2列にする */
 @media (min-width: 1024px) {
   .result-list {
     width: 90%;
@@ -272,7 +243,6 @@ button:hover {
 }
 
 .result-card {
-  /* ===== 見た目（grid-item + result-card 統合） ===== */
   display: block;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
@@ -285,14 +255,12 @@ button:hover {
 
   box-shadow: 0 4px 14px rgba(255, 167, 38, 0.25);
 
-  /* ===== 出現アニメーション ===== */
   opacity: 0;
   animation-name: fadeInUp;
   animation-duration: 0.5s;
   animation-timing-function: ease;
   animation-fill-mode: both;
 
-  /* ===== hover アニメーション ===== */
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
@@ -301,7 +269,6 @@ button:hover {
   position: relative;
 }
 
-/* hover時（grid-item の動きを再現） */
 .result-card:hover {
   transform: translateY(-3px) scale(1.03);
   box-shadow: 0 12px 28px rgba(255, 167, 38, 0.35);
@@ -336,7 +303,6 @@ button:hover {
   color: #444;
 }
 
-/* Animation: 下からフワッ */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -348,9 +314,6 @@ button:hover {
   }
 }
 
-/* ==========================================
-      ★ ポップ化追加パート
-========================================== */
 .result-card,
 .vertical-list-container,
 .vertical-item {
@@ -396,7 +359,6 @@ button:hover {
   text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
 }
 
-/* Header navigation (独立した行) */
 .header-nav {
   display: flex;
   gap: 16px;
@@ -436,10 +398,6 @@ button:hover {
   box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
 }
 
-
-/* ==========================================
-      ★ セレクトボックス（ポップ化）
-========================================== */
 .label-pop {
   font-family: "Fredoka", "Kaisei Decol", "Noto Sans JP", sans-serif;
   color: #ff6f00;
@@ -474,66 +432,56 @@ button:hover {
   box-shadow: 0 0 8px rgba(255, 111, 0, 0.4);
 }
 
-
-/* =========================================================
-      ★ ここから追加：PC 画面専用のレイアウト最適化
-========================================================= */
 @media (min-width: 1024px) {
 
   body {
-    font-size: 0.95rem; /* PCは少し文字を小さく */
+    font-size: 0.95rem; 
   }
 
   main {
-    padding: 30px 40px; /* 余白縮小 */
+    padding: 30px 40px;
   }
 
   .result-box,
   .result-list,
   .home-section textarea {
-    width: 90%; /* PCでは横幅広げる */
+    width: 90%; 
   }
 
   .result-card,
   .vertical-item {
-    padding: 16px 20px; /* 少しコンパクト化 */
+    padding: 16px 20px;
   }
 }
 
-/* 検索結果を常に4列表示にする */
 .search-grid {
   grid-template-columns: repeat(4, 1fr) !important;
 }
 
-/* ▼▼▼ モーダルウィンドウ用のスタイル ▼▼▼ */
-
-/* 画面全体を覆う黒い背景 */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* 半透明の黒 */
+  background-color: rgba(0, 0, 0, 0.6); 
   display: flex;
-  justify-content: center; /* 左右中央 */
-  align-items: center;     /* 上下中央 */
-  z-index: 1000;           /* 一番手前に表示 */
+  justify-content: center; 
+  align-items: center;    
+  z-index: 1000;         
 }
 
-/* 白いウィンドウ部分 */
 .modal-content {
   background-color: #fff;
   padding: 30px;
   border-radius: 15px;
   width: 90%;
-  max-width: 500px; /* PCでも広がりすぎないように */
+  max-width: 500px;
   position: relative;
   box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-  animation: fadeIn 0.3s ease; /* ふわっと表示 */
+  animation: fadeIn 0.3s ease; 
 }
 
-/* 閉じるボタン */
 .close-button {
   position: absolute;
   top: 10px;
