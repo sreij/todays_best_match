@@ -110,7 +110,7 @@ export default function Home() {
       <div className="result-list">
         {results.map((item, index) => (
           <div
-          className="grid-item"
+          className="grid-item result-card"
           key={`${item.brand}-${index}-${Date.now()}`}
          // ★ keyを少し強化
           style={{ animationDelay: `${index * 0.08}s` }} // ★ 順番にふわっ
