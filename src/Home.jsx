@@ -97,14 +97,16 @@ export default function Home() {
               animationDelay: `${index * 0.08}s` 
             }}
           >
+            <div className="tag b">お酒</div>
+            <div className="brand">{item.brand.name}</div>
+            
             <div className="tag o">王道</div>
             <div className="value">{item.classic.name}</div>
 
             <div className="tag i">意外</div>
             <div className="value">{item.surprise.name}</div>
 
-            <div className="tag b">お酒</div>
-            <div className="brand">{item.brand.name}</div>
+
           </div>
         ))}
       </div>
