@@ -1,6 +1,8 @@
 # 今夜のベストペア！ 🍶✨
 
-- !(public/pictures/Osake.png)
+<p align="center">
+  <img src="public/pictures/Osake.png" alt="Osake" width="300">
+</p>
 
 「今夜のベストペア！」は、**お酒とおつまみの新しい組み合わせ（ペア）**を気軽に見つけられるサイトです。
 
