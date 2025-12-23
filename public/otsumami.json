@@ -1,5 +1,5 @@
 [
-    { "id": 1, "name": "焼きとうもろこしスティックのチーズディップ", "type": "classic", "category": "beer", "targetBrandId": 13, "source": "サントリー（金麦）","url": "https://www.suntory.co.jp/recipe/005555/" },
+    { "id": 1, "name": "焼きとうもろこしスティックのチーズディップ", "type": "classic", "category": "beer", "targetBrandId": 13, "source": "サントリー（金麦）","url": "https://www.suntory.co.jp/beer/kinmugi/recipe/000178.html" },
     { "id": 2, "name": "じゃがいもの豆豉塩辛バターソテー", "type": "classic", "category": "beer", "targetBrandId": 13, "source": "サントリー（金麦）","url":"https://www.suntory.co.jp/beer/kinmugi/recipe/000485.html" },
     { "id": 3, "name": "韓国風トマト冷奴", "type": "classic", "category": "beer", "targetBrandId": 13, "source": "サントリー（金麦）" ,"url":"https://www.suntory.co.jp/beer/kinmugi/recipe/000445.html"},
     { "id": 4, "name": "半熟玉子の中華風", "type": "classic", "category": "beer", "targetBrandId": 13, "source": "サントリー（金麦）" ,"url":"https://www.suntory.co.jp/beer/kinmugi/recipe/000306.html"},

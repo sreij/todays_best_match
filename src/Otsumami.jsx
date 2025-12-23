@@ -78,6 +78,16 @@ export default function Otsumami() {
               <h3>{item.name}</h3>
               <p>種類: {item.type}</p>
               <p>提供元: {item.source}</p>
+              <p>
+                <a 
+                  href={item.url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  style={{ color: "#0066cc", textDecoration: "underline", fontWeight: "bold" }}
+                >
+                  おつまみのリンク
+                </a>
+              </p>
             </div>
           ))
         ) : (
