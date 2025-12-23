@@ -23,7 +23,7 @@ export default function About() {
         <br />
         <a href="dc2025_07.pdf">企画書</a>
         <br />
-        <a href="">説明文書</a>(アップロードしてパスを追加)
+        <a href="マニュアル.pdf">説明文書</a>
       </section>
     </main>
   );
