@@ -7,24 +7,20 @@ export default function Osake() {
   const [query, setQuery] = useState("");
   const [filtered, setFiltered] = useState([]);
 
-  // brand.json の読み込み
   useEffect(() => {
     fetch("/brand.json")
       .then((res) => res.json())
       .then((data) => {
-        // 全カテゴリーを1配列にまとめる
         const all = Object.values(data).flat();
         setBrands(all);
-        setFiltered(all); // ← 最初から全文表示
+        setFiltered(all);
       });
   }, []);
 
-  // 入力ごとに絞り込み
   const handleSearch = (e) => {
     const value = e.target.value;
     setQuery(value);
 
-    // 空なら全文表示に戻す
     if (!value.trim()) {
       setFiltered(brands);
       return;
@@ -70,7 +66,7 @@ export default function Osake() {
         />
       </section>
 
-      {/* ▼ 一覧表示（常に filtered を表示） ▼ */}
+      {}
       <div className="grid search-grid">
         {filtered.length > 0 ? (
           filtered.map((item) => (

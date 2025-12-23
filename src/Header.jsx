@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 
-// Webサイト上部のデザインを組み込むためのコンポーネントです。
 export default function Header() {
   return (
     <>
