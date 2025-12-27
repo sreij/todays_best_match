@@ -135,12 +135,6 @@ export default function Otsumami() {
         )}
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "40px" }}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-            <button>戻る</button>
-        </Link>
-      </div>
-
       {selectedItem && (
         <div className="modal-overlay" onClick={() => setSelectedItem(null)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
