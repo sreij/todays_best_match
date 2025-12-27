@@ -7,7 +7,7 @@ export default function About() {
         <div className="intro-movie">
           <h2>紹介動画</h2>
           <p>このサイトの紹介動画をご覧ください。</p>
-          <video controls>
+          <video controls width="600">
             <source src="videos\intro_video.mp4" type="video/mp4" />
             お使いのブラウザは動画タグに対応していません。
           </video>
